@@ -5,6 +5,7 @@ const exerciseSchema = new Schema({
 	username: { type: String, required: true },
 	description: { type: String, required: true },
 	duration: { type: Number, required: true },
+	places : {type: Array},
 	
 }, {
 	timestamps : true,
