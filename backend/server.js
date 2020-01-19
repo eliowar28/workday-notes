@@ -20,6 +20,7 @@ connection.once('open', ()=>{
 const exercisesRouter = require('./routes/exercises');
 const usersRouter = require('./routes/users');
 app.get('/', (req,res)=>{
+	console.log('someone get connected');
 	res.send('Hello World');
 });
 app.use('/exercises', exercisesRouter);
