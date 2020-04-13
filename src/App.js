@@ -1,15 +1,19 @@
 import React from 'react';
-import MyButton from './components/mybutton'
+import "./bootstrap.css"
+import Navbar from './components/navbar.component'
+import Create from './components/create.component'
 
-class myComponent extends React.Component{
+
+class App extends React.Component{
   render(){
     return(
       <div>
-        <h5> this is my main component, below is the button</h5>
-        <MyButton/>
+        <Navbar />
+        <Create/>
       </div>
+
     );
   }
 }
 
-export default myComponent;
+export default App;
