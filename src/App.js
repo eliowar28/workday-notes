@@ -4,23 +4,51 @@ import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="workday-notes">
+      <h1>Hello Test</h1>
     </div>
   );
 }
 
-export default App;
+function Hi({name}){
+  return (
+  <div className="container">
+  <div className="card">
+    <h3>{name}</h3>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+      Laudantium quisquam eum delectus aspernatur a. Itaque dolorem 
+      nihil earum sed,aut temporibus in, velit facilis magni delectus 
+      provident ipsum excepturi! Minima?
+    </p>
+  </div>
+
+  <div className="card">
+    <h3>{name}</h3>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+      Laudantium quisquam eum delectus aspernatur a. Itaque dolorem 
+      nihil earum sed,aut temporibus in, velit facilis magni delectus 
+      provident ipsum excepturi! Minima?
+    </p>
+  </div>
+  <div className="card">
+    <h3>{name}</h3>
+
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+      Laudantium quisquam eum delectus aspernatur a. Itaque dolorem 
+      nihil earum sed,aut temporibus in, velit facilis magni delectus 
+      provident ipsum excepturi! Minima?
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+      Laudantium quisquam eum delectus aspernatur a. Itaque dolorem 
+      nihil earum sed,aut temporibus in, velit facilis magni delectus 
+      provident ipsum excepturi! Minima?
+    </p>
+</div>
+</div>
+    
+  );
+}
+
+export default Hi;
