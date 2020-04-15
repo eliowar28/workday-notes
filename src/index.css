@@ -11,3 +11,42 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/*Home - notes*/
+.cardnote-container{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.cardnote{
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  margin: 10px;
+}
+
+@media(max-width:768px){
+  .cardnote{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 10px;
+  }
+}
+
+@media(max-width:425px){
+  .cardnote{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 20px;
+  }
+}
+
+
+
+
+
+/*----------*/

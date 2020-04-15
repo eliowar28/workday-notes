@@ -1,26 +1,27 @@
 import React, {Component} from 'react';
+import {Navbar, Nav, Container} from 'react-bootstrap';
+import {Link} from 'react-router-dom';
 
-class Navbar extends Component{
+class MyNavbar extends Component{
     render(){
         return (  
-            <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-                <div className="container">
-                    <a className="navbar-brand" href="#">Workday-Notes</a>
-                    <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-                        <span className="navbar-toggler-icon"></span>
-                    </button>
-                    <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
-                        <ul className="navbar-nav ml-auto mt-2 mt-lg-0">
-                        <li className="nav-item">
-                            <a className="nav-link" href="#">Create note</a>
-                        </li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
+            <Navbar bg="dark" variant="dark" expand="lg">
+                <Container>
+                <Link to="/"><Navbar.Brand>Workday-Notes</Navbar.Brand></Link>
+            <Navbar.Toggle aria-controls="basic-navbar-nav"/>
+            <Navbar.Collapse id="basic-navbar-nav">
+            <Nav className="ml-auto">
+            
+            <Link to="/create"><Nav.Link>Create Note</Nav.Link></Link> 
+        
+            </Nav>
+            </Navbar.Collapse>
+                </Container>
+ 
+            </Navbar>
         );
     }
 
 }
 
-export default Navbar;
+export default MyNavbar;
