@@ -24,7 +24,7 @@ class App extends React.Component{
         <br/>
         <Route path="/" exact component={Home} />
 
-        <Route path="/create" exact component={Create} />
+        <Route path="/create" component={Create} />
         <Route path="/view/:id" exact component={Note} />
         
       </Router>

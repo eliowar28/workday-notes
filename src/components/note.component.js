@@ -4,7 +4,7 @@ import Axios from 'axios';
 class Note extends Component{
     constructor(props){
         super(props);
-        this.location = 'http://localhost:5000/notes' + props.location.pathname;
+        this.location = 'http://localhost:5000/notes/' + props.location.pathname.split("/").pop()
         this.state = {
             note: {}
         }
@@ -16,9 +16,17 @@ class Note extends Component{
             const note = res.data;
             this.setState({note:note});        
         });
+        console.log(this.location)
     }
     render(){
-        return(<h3>This is my Note</h3>);
+    return(
+        <div className="container">
+            <h3 className="font-weight-bold">{this.state.note.title}</h3>
+            <hr/>
+            <p>{this.state.note.body}</p>
+        </div>
+    
+    );
     }
 }
 

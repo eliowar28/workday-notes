@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+import {Container,Form,Button} from 'react-bootstrap';
 
 class Create extends Component{
     constructor(props){
@@ -30,27 +31,34 @@ class Create extends Component{
             title: this.state.title,
             body: this.state.body
         }
+        
         axios.post('http://localhost:5000/notes/create', note)
-        .then(res => console.log(res));
+        .then((res) => window.location = "/")
+        .catch((error)=> alert(error));
+
+        
     }
 
     render(){
         return(
-            <div className="container mt-5">
-                <form onSubmit={this.onSubmit}>
-                    <div className="form-group">
-                    <label for="title">Title</label>
-                    <input type="text" className="form-control" id="title" placeholder="Insert Title" value={this.state.title} onChange={this.onChangeTitle}/>
-                    </div>
-                    <div className="form-group">
-                    <label for="body">Body</label>
-                    <textarea className="form-control" id="body" rows="8" value={this.state.body} onChange={this.onChangeBody}></textarea>
-                    </div>
+            <Container>
+                <Form onSubmit={this.onSubmit}>
+                    <Form.Group>
+                        <Form.Label><h6 className="font-weight-bold">Title</h6></Form.Label>
+                        <Form.Control type="text" onChange={this.onChangeTitle}></Form.Control>
+                    </Form.Group>
+                    <Form.Group>
+                        <Form.Label><h6 className="font-weight-bold">Body</h6></Form.Label>
+                        <Form.Control  as="textarea" rows="7" onChange={this.onChangeBody}></Form.Control>
+                    </Form.Group>
                     <div className="d-flex flex-row-reverse">
-                    <button type="submit" className="btn btn-dark ">Guardar</button>
-                    </div>
-                </form>
-            </div>
+                <Button variant="dark" type="submit">
+                    Save Note
+                </Button>
+                </div>
+                </Form>
+
+            </Container>
         );          
     }
 }
