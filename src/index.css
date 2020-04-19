@@ -27,6 +27,15 @@ code {
   margin: 10px;
 }
 
+.idk{
+  display: flex;
+  justify-content: center;
+    align-items: center;
+ height: 50px;
+ background-color: crimson;
+ margin-top: -5px;
+
+}
 
 
 @media(max-width:1024px){

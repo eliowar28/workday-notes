@@ -1,35 +1,38 @@
-import React from 'react';
-import {BrowserRouter as Router, Route} from 'react-router-dom';
-//Main Components
-import Home from './components/home.component';
+import React, { Component } from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { SecureRoute, Security, LoginCallback } from '@okta/okta-react';
+
+import Home from './components/home.component'
+import Notes from './components/notes.component';
 import Create from './components/create.component';
-import Note from './components/note.component';
-//Element Components
 import Navbar from './components/navbar.component';
-
-
-import '@fortawesome/fontawesome-free/css/all.min.css';
-import 'bootstrap-css-only/css/bootstrap.min.css';
-import 'mdbreact/dist/css/mdb.css';
-import "./index.css";
-
-
-
-class App extends React.Component{
-  render(){
-    return(
-      <Router>
  
-        <Navbar />
-        <br/>
-        <Route path="/" exact component={Home} />
+class App extends Component {
+  
+  config = {
+    issuer: 'https://dev-658371.okta.com/oauth2/default',
+    redirectUri: window.location.origin + '/implicit/callback',
+    clientId: '0oa95rrts6Lj7TVtZ4x6',
+    pkce: true
+  }
 
-        <Route path="/create" component={Create} />
-        <Route path="/view/:id" exact component={Note} />
-        
+  render() {
+    return (
+      <Router>
+        <Security {...this.config}>
+          <Navbar />
+          <Route path="/" exact component={Home} />
+          <Route path='/notes' exact component={Notes}/>
+          <Route path='/create' exact component={Create}/>
+          <Route path='/implicit/callback' component={LoginCallback} />
+        </Security>
       </Router>
     );
   }
 }
-
+ 
 export default App;
+
+
+
+

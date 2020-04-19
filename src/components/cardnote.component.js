@@ -32,14 +32,17 @@ class CardNote extends Component{
             <p className="card-text white-text mb-4">{this.state.note.body.substr(0,100)}</p>
         </div>
         <div className="justify-self-baseline d-flex flex-row">
-            <Button variant="danger" onClick={this.props.delete}>
-                    delete  <i className="fas fa-trash"></i>
 
-            </Button>
             <Button variant="success" href={this.view}>
             <h6>Read More  <i className="fas fa-angle-double-right"></i></h6>
             </Button>
             </div>
+            </div>
+        <div className="idk">
+        <p variant="danger" onClick={this.props.delete}>
+                    delete  <i className="fas fa-trash"></i>
+
+            </p>
             </div>
         </div>
   
