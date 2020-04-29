@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route,Switch} from 'react-router-dom';
 import { SecureRoute, Security, LoginCallback } from '@okta/okta-react';
 
 import Home from './components/home.component'
@@ -21,12 +21,16 @@ class App extends Component {
     return (
       <Router>
         <Security {...this.config}>
+          <div>
           <Navbar />
+          <Switch>
           <Route path="/" exact component={Home} />
           <Route path='/notes' exact component={Notes}/>
           <Route path='/create' exact component={Create}/>
           <Route path='/view/:id' exact component={Note}/>
+          </Switch>
           <Route path='/implicit/callback' component={LoginCallback} />
+          </div>
         </Security>
       </Router>
     );

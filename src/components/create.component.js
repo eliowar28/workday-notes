@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Container,Form,Button} from 'react-bootstrap';
 import Editor from './editor.component';
+import { Redirect, useHistory } from 'react-router-dom';
 
 class Create extends Component{
     constructor(props){
@@ -10,7 +11,8 @@ class Create extends Component{
             body:'',
             file: '',
             filename:'Choose a Image',
-            imagePreviewUrl: null
+            imagePreviewUrl: null,
+            redirect:false
         }
     }
 
@@ -48,7 +50,7 @@ class Create extends Component{
 
         const formData = new FormData();
 
-        formData.append('image',this.state.file, this.state.file.name);
+        formData.append('image',this.state.file, Date.now() + this.state.file.name);
         formData.append('title', this.state.title);
         formData.append('body',this.state.body);
         
@@ -57,9 +59,13 @@ class Create extends Component{
             body: formData
         })
         .then( res => res.json())
-        .then( res => console.log(res));
+        .then( res => console.log(res))
+        .then( () => this.setState({
+            redirect:true
+        }))
+        .catch(err => console.log(err));
 
-
+        
         
 
         
@@ -67,12 +73,18 @@ class Create extends Component{
 
     render(){
         let imagePreview;
+
         if(this.state.imagePreviewUrl){
             imagePreview = <img src={this.state.imagePreviewUrl} id="imageObject" alt=""/>
         }
+
+        if(this.state.redirect){
+            return <Redirect to="/notes" />
+        }
+        
         return(
 
-            <Container className="mt-5">
+            <Container style={{marginTop:'100px'}}>
                 <Form onSubmit={this.onSubmit}>
                     <div className="row">
                         <div className="col-md-4">
@@ -115,7 +127,9 @@ class Create extends Component{
                 </Form>
 
             </Container>
-        );          
+        
+        );
+        
     }
 }
 

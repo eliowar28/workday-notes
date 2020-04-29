@@ -5,7 +5,7 @@ class HtmlComponent extends React.Component {
 
   render() {
     const html = this.props.body;
-    return <div>{ ReactHtmlParser(html) }</div>;
+    return <div className="text-justify">{ ReactHtmlParser(html) }</div>;
   }
 }
 

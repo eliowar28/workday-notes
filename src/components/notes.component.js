@@ -21,11 +21,8 @@ export default withOktaAuth(class Home extends Component{
         axios.get('http://localhost:5000/notes')
             .then(res => {
                 const notes = res.data;
-                this.setState({notes});
-                
-                
+                this.setState({notes}); 
             });
-        
         this.props.authService.getUser()
         .then((data) => console.log(data));
     }
@@ -33,8 +30,8 @@ export default withOktaAuth(class Home extends Component{
     delete = (id) => {
         const deletenote = `http://localhost:5000/notes/${id}`
         axios.delete(deletenote)
-        .then(()=> {
-            const notes = this.state.notes.filter((note)=> note._id !== id);
+        .then((res)=> {
+            const notes = res.data;
             this.setState({notes});
         })
         .catch(error=> console.log(error));
@@ -44,8 +41,8 @@ export default withOktaAuth(class Home extends Component{
 
     render(){
         return(
-        <div className="container">
-        <div className="cardnote-container">
+        <div className="container mt-5">
+        <div className="mycard-deck">
             {this.state.notes.map((note)=>
                <CardNote note={note} delete={()=> this.delete(note._id)}/>
             )}

@@ -10,7 +10,7 @@ class MyComponent extends Component {
         return (
             <div>
               <SunEditor onChange={this.props.onChange}  setOptions={{
-                            height: 300,
+                            height: 200,
                             buttonList: buttonList.complex
                            
                             

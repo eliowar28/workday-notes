@@ -21,7 +21,7 @@ class Note extends Component{
     }
     render(){
     return(
-        <div className="container mt-3">
+        <div className="container" style={{marginTop:'100px'}}>
             <h3 className="font-weight-bold">{this.state.note.title}</h3>
             <hr/>
             <Body body={this.state.note.body} />
