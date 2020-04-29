@@ -4,6 +4,7 @@ import { SecureRoute, Security, LoginCallback } from '@okta/okta-react';
 
 import Home from './components/home.component'
 import Notes from './components/notes.component';
+import Note from './components/note.component';
 import Create from './components/create.component';
 import Navbar from './components/navbar.component';
  
@@ -24,6 +25,7 @@ class App extends Component {
           <Route path="/" exact component={Home} />
           <Route path='/notes' exact component={Notes}/>
           <Route path='/create' exact component={Create}/>
+          <Route path='/view/:id' exact component={Note}/>
           <Route path='/implicit/callback' component={LoginCallback} />
         </Security>
       </Router>

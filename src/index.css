@@ -1,4 +1,6 @@
+
 body {
+
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -13,6 +15,17 @@ code {
 }
 
 /*Home - notes*/
+#myhome{
+  box-sizing: border-box;
+  width: 100%;
+  height: 100vh;
+  background-color: chartreuse;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
 .cardnote-container{
   display: flex;
   flex-direction: row;
@@ -26,17 +39,6 @@ code {
   width: 30%;
   margin: 10px;
 }
-
-.idk{
-  display: flex;
-  justify-content: center;
-    align-items: center;
- height: 50px;
- background-color: crimson;
- margin-top: -5px;
-
-}
-
 
 @media(max-width:1024px){
   .cardnote{
@@ -71,6 +73,33 @@ code {
 
 
 
+.view{
+  width: 100%;
+  height: 35vh;
+  object-fit: cover;
+  object-position: center;
+  
+
+}
+
+
 
 
 /*----------*/
+/*Create Note - ImageContainer*/
+
+#imageContainer{
+  width: 100%;
+  height: 36vh;
+  border: solid 1px rgb(233, 233, 233);
+}
+
+#imageObject{
+width: inherit;
+height: inherit;
+object-fit: contain;
+
+}
+
+
+

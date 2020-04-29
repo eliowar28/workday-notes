@@ -1,13 +1,16 @@
 import React, {Component} from 'react';
-import axios from 'axios';
 import {Container,Form,Button} from 'react-bootstrap';
+import Editor from './editor.component';
 
 class Create extends Component{
     constructor(props){
         super(props);
         this.state = {
             title: '',
-            body:''
+            body:'',
+            file: '',
+            filename:'Choose a Image',
+            imagePreviewUrl: null
         }
     }
 
@@ -19,43 +22,96 @@ class Create extends Component{
     }
 
     onChangeBody = e => {
-       
-        this.setState({
-            body: e.target.value
+       console.log(e);
+       this.setState({
+            body: e
         });
     }
 
+    onChangeImage = e => {
+        let file = e.target.files[0];
+        this.setState({
+            file: file,
+            filename: file.name,
+            imagePreviewUrl: URL.createObjectURL(file)
+
+        });
+        
+
+        
+     
+    }
+
+
     onSubmit = e => {
         e.preventDefault();
-        const note = {
-            title: this.state.title,
-            body: this.state.body
-        }
+
+        const formData = new FormData();
+
+        formData.append('image',this.state.file, this.state.file.name);
+        formData.append('title', this.state.title);
+        formData.append('body',this.state.body);
         
-        axios.post('http://localhost:5000/notes/create', note)
-        .then((res) => window.location = "/")
-        .catch((error)=> alert(error));
+        fetch('http://localhost:5000/notes/create',{
+            method: 'POST',
+            body: formData
+        })
+        .then( res => res.json())
+        .then( res => console.log(res));
+
+
+        
 
         
     }
 
     render(){
+        let imagePreview;
+        if(this.state.imagePreviewUrl){
+            imagePreview = <img src={this.state.imagePreviewUrl} id="imageObject" alt=""/>
+        }
         return(
-            <Container>
+
+            <Container className="mt-5">
                 <Form onSubmit={this.onSubmit}>
-                    <Form.Group>
-                        <Form.Label><h6 className="font-weight-bold">Title</h6></Form.Label>
-                        <Form.Control type="text" onChange={this.onChangeTitle}></Form.Control>
-                    </Form.Group>
-                    <Form.Group>
-                        <Form.Label><h6 className="font-weight-bold">Body</h6></Form.Label>
-                        <Form.Control  as="textarea" rows="7" onChange={this.onChangeBody}></Form.Control>
-                    </Form.Group>
+                    <div className="row">
+                        <div className="col-md-4">
+                         
+                        <Form.Group>
+                            <Form.Label><h6 className="font-weight-bold">Image</h6></Form.Label>
+                                <div id="imageContainer" className="z-depth-1-half">
+                                    {imagePreview}
+                                </div>
+                                <div className="custom-file">
+                                    <Form.Control type="file" className="custom-file-input" id="customFile" onChange={this.onChangeImage}/>
+                                    <label className="custom-file-label" for="customFile">{this.state.filename}</label>
+                                </div>
+
+                        </Form.Group>
+                
+                        </div>
+                        <div className="col-md-8">
+                            <Form.Group>
+                                <Form.Label><h6 className="font-weight-bold">Title</h6></Form.Label>
+                                <Form.Control type="text" onChange={this.onChangeTitle}></Form.Control>
+                            </Form.Group>
+                            <Form.Group>
+                                <Form.Label><h6 className="font-weight-bold">Body</h6></Form.Label>
+                                <Editor onChange={this.onChangeBody} />   
+                            </Form.Group>
+                            
+
+                                
+                                
+
+                            
+                        </div>
+                    </div>
                     <div className="d-flex flex-row-reverse">
-                <Button variant="dark" type="submit">
-                    Save Note
-                </Button>
-                </div>
+                        <Button variant="dark" type="submit">
+                            Save Note
+                        </Button>
+                    </div>
                 </Form>
 
             </Container>

@@ -34,7 +34,7 @@ export default withOktaAuth(class Home extends Component{
         const deletenote = `http://localhost:5000/notes/${id}`
         axios.delete(deletenote)
         .then(()=> {
-            const notes = this.state.notes.filter((note)=> note._id != id);
+            const notes = this.state.notes.filter((note)=> note._id !== id);
             this.setState({notes});
         })
         .catch(error=> console.log(error));
@@ -47,7 +47,7 @@ export default withOktaAuth(class Home extends Component{
         <div className="container">
         <div className="cardnote-container">
             {this.state.notes.map((note)=>
-               <CardNote mynote={note} delete={()=> this.delete(note._id)}/>
+               <CardNote note={note} delete={()=> this.delete(note._id)}/>
             )}
             
         </div>

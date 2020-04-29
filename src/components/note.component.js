@@ -1,5 +1,6 @@
 import React,{Component} from 'react';
-import Axios from 'axios';
+import axios from 'axios';
+import Body from './notebody.component';
 
 class Note extends Component{
     constructor(props){
@@ -12,18 +13,18 @@ class Note extends Component{
     }
 
     componentDidMount(){
-        Axios.get(this.location).then(res =>{
+        axios.get(this.location).then(res =>{
             const note = res.data;
             this.setState({note:note});        
         });
-        console.log(this.location)
+        console.log(this.state)
     }
     render(){
     return(
-        <div className="container">
+        <div className="container mt-3">
             <h3 className="font-weight-bold">{this.state.note.title}</h3>
             <hr/>
-            <p>{this.state.note.body}</p>
+            <Body body={this.state.note.body} />
         </div>
     
     );
