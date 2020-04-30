@@ -5,7 +5,6 @@ import Body from './notebody.component';
 class Note extends Component{
     constructor(props){
         super(props);
-        this.location = 'http://localhost:5000/notes/' + props.location.pathname.split("/").pop()
         this.state = {
             note: {}
         }
@@ -13,18 +12,21 @@ class Note extends Component{
     }
 
     componentDidMount(){
-        axios.get(this.location).then(res =>{
+       const {id} = this.props.match.params
+        axios.get(`http://localhost:5000/notes/${id}`).then(res =>{
             const note = res.data;
             this.setState({note:note});        
         });
-        console.log(this.state)
+
     }
     render(){
     return(
         <div className="container" style={{marginTop:'100px'}}>
             <h3 className="font-weight-bold">{this.state.note.title}</h3>
             <hr/>
-            <Body body={this.state.note.body} />
+            <img className="textWrap" src={`http://localhost:5000/${this.state.note.file}`}/>
+            <Body body={this.state.note.body}/>
+            
         </div>
     
     );

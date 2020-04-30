@@ -27,12 +27,16 @@ export default withOktaAuth(class Home extends Component{
         .then((data) => console.log(data));
     }
 
+    componentDidUpdate(prevProps, prevState){
+
+    }
+
     delete = (id) => {
         const deletenote = `http://localhost:5000/notes/${id}`
         axios.delete(deletenote)
         .then((res)=> {
-            const notes = res.data;
-            this.setState({notes});
+            console.log(res.data);
+            this.setState({notes: res.data});
         })
         .catch(error=> console.log(error));
         

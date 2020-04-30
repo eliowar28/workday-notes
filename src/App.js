@@ -27,7 +27,7 @@ class App extends Component {
           <Route path="/" exact component={Home} />
           <Route path='/notes' exact component={Notes}/>
           <Route path='/create' exact component={Create}/>
-          <Route path='/view/:id' exact component={Note}/>
+          <Route path='/view/:id' component={Note}/>
           </Switch>
           <Route path='/implicit/callback' component={LoginCallback} />
           </div>
