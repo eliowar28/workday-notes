@@ -10,16 +10,16 @@ This app was built using MongoDB, Express.js, React and Node (MERN).
 
 ## Screenshots
 
-### Login 
-![](screenshot/login.png)
-
 ### Home
 ![](screenshot/home.png)
 
-### Tickets
-![](screenshot/requeriments.png)
+### Create Post
+![](screenshot/create.png)
 
-## Built With
+### Post List - different screen size
+![](screenshot/posts_view_phone.png)
+![](screenshot/posts.png)
+![](screenshot/posts_tablet_view.png)
 
-* [Codeigniter](https://codeigniter.com/) - The web framework used
-* [AdminLTE 3](https://adminlte.io/themes/dev/AdminLTE/index.html) - Dashbord Theme
+### Post
+![](screenshot/read.png)
